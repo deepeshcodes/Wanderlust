@@ -1,0 +1,1 @@
+// After the completion of the whole project, write down on a document or a paper, on how the Complete project was built from scratch i.e. Step-By-Step execution
