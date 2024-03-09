@@ -145,4 +145,8 @@ body{
     text-align: center;
 }
 
-
+/* Map */
+#map{
+    width: 80vh;
+    height: 400px;
+}
