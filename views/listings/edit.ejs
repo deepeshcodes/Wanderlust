@@ -36,14 +36,14 @@
  
         <div class="mb-3 col-8">
             <label for="country" class="form-label">Country</label>
-            <input name="listing[location]" value="<%= listing ? listing.location : ''  %>" type="text" class="form-control" required />
+            <input name="listing[location]" value="<%= listing ? listing.country : ''  %>" type="text" class="form-control" required />
             <div class="invalid-feedback">Enter a valid country</div>
         </div>
       </div>
 
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input name="listing[country]" value="<%= listing ? listing.country : '' %>" type="text" class="form-control" required/>
+            <input name="listing[country]" value="<%= listing ? listing.location : '' %>" type="text" class="form-control" required/>
             <div class="invalid-feedback">Enter a valid location</div>
         </div>
 
