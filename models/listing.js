@@ -36,7 +36,14 @@ const listingSchema = new Schema({
       required: true,
     },
   },
+  category: {
+    type: String,
+    enum: ["trending","rooms","iconic cities","mountains","castles","amazing pools","camping","farm","arctic","boats"],
+    required: true,
+  }
 });
+
+listingSchema.index({ title: 1});
 
 // POST Mongoose Middleware
 listingSchema.post("findOneAndDelete", async (listing) => {

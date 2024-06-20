@@ -1,0 +1,218 @@
+.show-page-main-div {
+    /* border: 2px solid orange; */
+    max-width: 500px;
+    margin: 1rem auto;
+    min-height: 100vh;
+}
+
+.show-listing-card {
+    border: 2px solid gainsboro;
+    border-top: none;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+}
+
+.show-page-image-div {
+    width: 100%;
+    height: 300px;
+}
+
+.show-page-image-div img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.show-page-details-div {
+    /* border: 2px solid green; */
+    /* border: 2px solid gainsboro; */
+    /* border-top: none; */
+    margin: 1rem auto;
+    max-height: 180px;
+    padding: 0 1rem;
+}
+
+.show-page-details-div p {
+    font-size: 1rem;
+    margin-top: -0.5rem ;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #000;
+}
+
+.edit-delete-btns-div{
+    /* border: 1px solid pink; */
+    width: 100%;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items:center;
+    padding: 0 1rem 1rem;
+}
+
+.edit-delete-btns-div form:nth-of-type(1) {
+    margin-right: 1rem;
+}
+
+.edit-delete-btns-div button {
+    outline: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.listing-edit-btn {
+    background-color: #fe424d;
+    color: #fff;
+    /* margin-left: 1rem; */
+}
+
+.listing-edit-btn:hover{
+    background-color: #f9848c;
+}
+
+.listing-delete-btn {
+    background-color: #000;
+    color: #fff;
+    margin-left: 2rem;
+}
+
+.listing-delete-btn:hover{
+    background-color: #3d3535;
+}
+
+/* Review Form Styling */
+
+.review-form-div {
+    /* border: 2px  solid black; */
+}
+
+.review-form-div form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.rating-input-div {
+    /* border: 1px solid #fe424d; */
+}
+
+.rating-input-div label{
+    color: #000;
+}
+
+.comment-input-div{
+    /* border: 1px solid #fe424d; */
+}
+
+.comment-input-div label{
+    color: #000;
+}
+
+.review-submit-btn {
+    color: #000;
+    outline: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: 1px solid black;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.review-submit-btn:hover {
+    background-color: #fe424d;
+    color: #fff;
+}
+
+/* Actual Reviews Styling */
+
+.actual-reviews-div{
+    margin: 2rem auto ;
+}
+
+.individual-review{
+    border: 2px solid #000;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.individual_review p {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.review-edit-delete-btns{
+    display: flex;
+}
+
+.review-edit-delete-btns form button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+.review-edit-btn{
+    background-color: #fe424d;
+    color: #fff;
+}
+
+.review-edit-btn:hover{
+    background-color: #f9848c;
+}
+
+.review-delete-btn{
+    background-color: #000;
+    color: #fff;
+    margin-left: 2rem;
+}
+
+.review-delete-btn:hover{
+    background-color: #3d3535;
+}
+
+/* Map */
+
+#map{
+    width: 100%;
+    height: 500px;
+    border: 2px solid #000;
+}
+
+/* Responsive CSS Layout */
+
+@media(max-width:550px){
+    .show-page-main-div{
+        max-width: 350px;
+    }
+
+    .show-page-image-div{
+        height: 200px;
+    }
+
+    .edit-delete-btns-div{
+        padding: 0.7rem;
+        font-size: 1rem;
+    }
+
+    .review-edit-delete-btns form button {
+        padding: 0.25rem 1rem;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    #map{
+        width: 100%;
+        height: 300px;
+        
+    }
+}

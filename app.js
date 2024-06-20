@@ -32,7 +32,7 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true});
+  await mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 }
 
 app.set("view engine", "ejs");
@@ -85,20 +85,25 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req, res) => {
+  res.render("index", { currUser: req.user });
+});
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  let { statusCode = 500, message = "Something went wrong" } = err;
+  res.status(statusCode).render("error.ejs", { message });
+});
 
 //PAGE NOT FOUND MIDDLEWARE
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
 });
 
-// Error Handling Middleware
-// app.use((err, req, res, next) => {
-//   let { statusCode = 500, message = "Something went wrong" } = err;
-//   res.status(statusCode).render("error.ejs", { message });
-// });
 
 app.listen(3000, () => {
   console.log("server is listening to port 3000");

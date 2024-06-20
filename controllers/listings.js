@@ -3,7 +3,39 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
+module.exports.searchListings = async (req, res) => {
+  const { search } = req.query;
+
+  if (!search || search.trim() === "") {
+    req.flash("error", "Please enter something to search!");
+    return res.redirect("/listings");
+  }
+
+  const query = { title: { $regex: new RegExp(search, "i") } };
+  const listings = await Listing.find(query);
+
+  if (listings.length === 0) {
+    req.flash("error", "No listings found for your search query");
+  }
+
+  res.render("listings/index.ejs", { allListings: listings });
+};
+
+module.exports.renderNewForm = (req, res) => {
+  res.render("listings/new.ejs");
+};
+
 module.exports.index = async (req, res) => {
+
+  // const {search} = req.query;
+  // const queryObject = {};
+
+  // if(search) {
+  //   queryObject.search = {$regex: search, $options: "i"};
+  // }
+
+  // let findListings = Listing.find(queryObject);
+  //const allListings = await findListings(queryObject);
   const allListings = await Listing.find({});
   res.render("listings/index.ejs", { allListings });
 };
@@ -47,6 +79,9 @@ module.exports.createListing = async (req, res, next) => {
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
   newListing.geometry = response.body.features[0].geometry;
+  newListing.category = new Listing(req.body.category);
+
+  console.log(req.body);
 
   let savedListing = await newListing.save();
   console.log(savedListing);

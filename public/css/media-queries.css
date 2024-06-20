@@ -1,0 +1,100 @@
+@media screen and (max-width:1200px){
+    
+    #filter{
+        justify-content: space-evenly;
+    }
+
+    .filter{
+        text-align: center;
+        margin-right: 1.5rem;
+        opacity: 0.5;
+        width: auto;
+    }
+
+    .filter p{
+        font-size: 1rem;
+    }
+
+    .filter i {
+        font-size: 1.5rem;
+    }
+
+    .tax-toggle{
+        width: 100%;
+        height: 4rem;
+        padding: 0 0.5rem 0 1rem;
+        text-align: center;
+        display: flex;
+        align-items: center ;
+        justify-content: space-evenly;
+        /* margin-left: 0.5rem   ; */
+    }
+
+    .tax-switch-input{
+
+    }
+
+    .display-tax-text{
+
+    }
+
+    .show-img{
+        height: 20vh;
+    }
+}
+
+/* @media screen and (max-width:1000px) {
+    body{
+        display: flex;
+        align-items: center;
+    }
+    .card-row{
+        
+    }
+
+} */
+
+@media screen and (min-width:990px) and (max-width: ){
+    
+}
+
+@media screen and (min-width:491px) and (max-width:762px) {
+
+    /* #filter{
+        margin: 2rem;
+        justify-content: space-evenly;
+    } */
+
+    .navbar-toggler{
+        background-color: white;
+    }
+
+   .tax-toggle{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin: 0 2rem;
+   }
+
+   /* .form-check-reverse{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+   } */
+
+   .form-check-input[type="checkbox"]{
+    margin-right: 30px;
+   }
+
+   .form-check-label{
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   }
+
+}
+
