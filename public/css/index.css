@@ -22,6 +22,21 @@
     font-size: 0.8rem;
 }
 
+.searchFilter{
+    padding: 0;
+}
+
+.searchFilter button{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.searchFilter i{
+    text-align: center;
+    background-color: #fff;
+}
+
 /* Tax Toggle */
 
 .tax-info{
@@ -47,9 +62,13 @@
     justify-content:space-between;
 }
 
+.row.center-last-row {
+    justify-content: center;
+}
+
 .listing-row{
     /* border: 1px solid red; */
-    justify-content: space-between;
+    /* justify-content:space-around; */
     margin-block: 0 30px;
     margin-top: 10px;
     flex-wrap: wrap;

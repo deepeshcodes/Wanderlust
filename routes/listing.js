@@ -20,7 +20,9 @@ router.route("/")
      wrapAsync(listingController.createListing)
      );
 
-router.get("/search", wrapAsync(listingController.searchListing));
+router.get("/search", wrapAsync(listingController.searchListings));
+
+router.get("/filters", wrapAsync(listingController.searchFilters));
 
  //New Route
  router.get("/new", isLoggedIn, listingController.renderNewForm);
@@ -34,14 +36,7 @@ router.get("/search", wrapAsync(listingController.searchListing));
    validateListing,
    wrapAsync (listingController.updateListing)
    )
- .delete(isLoggedIn, isOwner, wrapAsync (async (req,res) => {
-   let {id} = req.params;
-   let deletedListing = await Listing.findByIdAndDelete(id);
-   console.log("Deleted Listing:");
-   console.log(deletedListing);
-   req.flash("success", "Listing Deleted!");
-   res.redirect("/listings");
-}));
+ .delete(isLoggedIn, isOwner, wrapAsync (listingController.destroyListing));
  
  //Edit Route
  router.get("/:id/edit", isLoggedIn,isOwner, wrapAsync (async (req,res) => {

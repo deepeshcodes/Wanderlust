@@ -3,15 +3,34 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
-module.exports.searchListings = async (req, res) => {
-  const { search } = req.query;
+module.exports.searchFilters = async (req, res) => {
+    const category = req.query.category;
+    console.log("Filter category: ", category);
 
-  if (!search || search.trim() === "") {
+    if(!category || !Listing.schema.path('category').enumValues.includes(category)) {
+      req.flash("error", "Invalid category selected");
+      return res.redirect("/listings");
+    }
+
+    const listings = await Listing.find({ category: category});
+
+    if(listings.length === 0) {
+      req.flash("error", `No listings found for the ${category}`);
+    }
+
+    res.render("listings/index.ejs", {allListings: listings});
+} 
+
+module.exports.searchListings = async (req, res) => {
+  const  q  = req.query.search;
+  //console.log("search: ",q);
+  //console.log("req.query: ",req.query);
+  if (!q || q.trim() === "") {
     req.flash("error", "Please enter something to search!");
     return res.redirect("/listings");
   }
 
-  const query = { title: { $regex: new RegExp(search, "i") } };
+  const query = { title: { $regex: new RegExp(q, "i") } };
   const listings = await Listing.find(query);
 
   if (listings.length === 0) {
@@ -26,16 +45,6 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.index = async (req, res) => {
-
-  // const {search} = req.query;
-  // const queryObject = {};
-
-  // if(search) {
-  //   queryObject.search = {$regex: search, $options: "i"};
-  // }
-
-  // let findListings = Listing.find(queryObject);
-  //const allListings = await findListings(queryObject);
   const allListings = await Listing.find({});
   res.render("listings/index.ejs", { allListings });
 };
@@ -79,9 +88,9 @@ module.exports.createListing = async (req, res, next) => {
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
   newListing.geometry = response.body.features[0].geometry;
-  newListing.category = new Listing(req.body.category);
+  newListing.category = req.body.listing.category;
 
-  console.log(req.body);
+  console.log(Listing.schema.path('category').enumValues);
 
   let savedListing = await newListing.save();
   console.log(savedListing);
@@ -127,6 +136,7 @@ module.exports.updateListing = async (req, res) => {
   .send();
 
   listing.geometry = response.body.features[0].geometry;
+  listing.category = req.body.listing.category; 
 
   await listing.save();
   console.log(`Update Route - Listing ID: ${id}, Listing:`, listing);
@@ -135,6 +145,8 @@ module.exports.updateListing = async (req, res) => {
 
     } catch (error) {
       console.error(error);
+      req.flash("error","Failed to update the listing!")
+      res.redirect(`/listings/${id}/edit`);
     }
 
 };

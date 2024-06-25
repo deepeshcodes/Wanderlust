@@ -20,11 +20,14 @@
 
             <p><b>Description: </b> <%= listing.description%></p>
 
+            <p><b>Category: </b> <%= listing.category%></p>
+
             <p class="card-text"> &#x20b9 <%= listing.price.toLocaleString("en-IN")%> </p>
 
-            <p><b>Location: </b> <%= listing.location%> </p>
-
-            <p><b>Country: </b> <%= listing.country%> </p>
+            <p>
+                <b>Location: </b> <%= listing.location%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Country: </b> <%= listing.country%> 
+            </p>
 
         </div>
 

@@ -3,48 +3,103 @@
 
     <div id="filters">
         <div class="filter">
-            <div><i class="fa-solid fa-fire"></i></div>
+            <div>
+                <form id="searchFilterTrending" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="trending">
+                    <button type="submit" class="no-margin"> <i class="fa-solid fa-fire"></i> </button>
+                </form>
+            </div>
             <p>Trending</p>
         </div>
         <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
+            <div>
+            <form id="searchFilterRooms" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                <input type="hidden" name="category" value="rooms">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-bed"></i> </button>
+                </form>
+            </div>
             <p>Rooms</p>
-        </div>
+         </div>
         <div class="filter">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <div>
+                <form id="searchFilterIconicCities" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="iconiccities">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-mountain-city"></i> </button>
+                </form>
+            </div>
             <p>Iconic Cities</p>
         </div>
         <div class="filter">
-            <div><i class="fa-solid fa-mountain"></i></i></div>
+            <div>
+                <form id="searchFilterMountains" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="mountains">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-mountain"></i> </button>
+                </form>
+            </div>
             <p>Mountains</p>
         </div>
         <div class="filter">
-            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <div>
+                <form id="searchFilterCastles" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="castles">
+                <button type="submit" class="no-margin"> <i class="fa-brands fa-fort-awesome"></i> </button>
+                </form>
+            </div>
             <p>Castles</p>
         </div>
         <div class="filter">
-            <div><i class="fa-solid fa-person-swimming"></i>></div>
+            <div>
+                <form id="searchFilterAmazingPools" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="amazingpools">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-person-swimming"></i> </button>
+                </form>
+            </div>
             <p>Amazing Pools</p>
         </div>
         <div class="filter">
-            <div><i class="fa-solid fa-campground"></i></div>
+            <div>
+                <form id="searchFilterCamping" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="camping">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-campground"></i> </button>
+                </form>
+            </div>
             <p>Camping</p>
         </div>
         <div class="filter">
-            <div><i class="fa-solid fa-cow"></i></div>
+            <div>
+                <form id="searchFilterFarm" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="farm">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-cow"></i> </button>
+                </form>
+            </div>
             <p>Farm</p>
         </div>
         <div class="filter">
-            <div><i class="fa-solid fa-snowflake"></i></div>
+            <div>
+                <form id="searchFilterArctic" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="arctic">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-igloo"></i> </button>
+                </form>
+            </div>
             <p>Arctic</p>
         </div>
         <div class="filter">
-            <div><i class="fa-solid fa-igloo"></i></div>
-            <p>Arctic</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-sailboat"></i></div>
+            <div>
+                <form id="searchFilterBoats" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="boats">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-sailboat"></i> </button>
+                </form>
+            </div>
             <p>Boats</p>
+        </div>
+        <div class="filter">
+            <div>
+                <form id="searchFilterOthers" class="searchFilter"  role="search" action="/listings/filters" method="GET">
+                    <input type="hidden" name="category" value="others">
+                <button type="submit" class="no-margin"> <i class="fa-solid fa-snowflake"></i> </button>
+                </form>
+            </div>
+            <p>Others</p>
         </div>
 
         <div class="tax-toggle">
@@ -57,7 +112,7 @@
         </div>
     </div>      
 
-<div class="row flex-wrap">
+<div class="row flex-wrap <%= allListings.length % 4 !== 0 ? 'center-last-row': '' %> ">
         <% for(let listing of allListings) { %>
             <% if(listing.title && listing.price !== null && listing.price !== undefined){ %>
                 <div class="listing-row col-xl-3 col-lg-4 col-md-6 col-sm-12">
